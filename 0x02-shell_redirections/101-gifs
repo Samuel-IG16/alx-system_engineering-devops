@@ -1,2 +1,2 @@
 #!/bin/bash
-find ./ -type f -regex ".*\.gif" -printf "%f\n" | rev | sed -e 's/\.gif$//' | LC_ALL=C sort -k 1.1f,1.1 
+find ./ -type f -name "*.gif" -printf "%f\n" | rev | sed -e 's/\.gif$//' | LC_ALL=C sort -k 1.1f,1.1 
