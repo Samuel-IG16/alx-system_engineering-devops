@@ -1,6 +1,6 @@
 # Alx System Engineering Devops
 ## Description
-Alx's Holberton curriculum for system engineering include the following projects that are meant to help us learn the basics of devops.
+Alx's Holberton curriculum for system engineering include the following projects that are meant to help us learn the basics of devops, shell and bash.
 ### Table of contents
 * [0x00. Shell, basics](https://github.com/Samuel-IG16/alx-higher_level_programming/tree/master/0x00-python-hello_world)
 * [0x01. Shell, permissions](https://github.com/Samuel-IG16/alx-higher_level_programming/tree/master/0x01-python-if_else_loops_functions)
