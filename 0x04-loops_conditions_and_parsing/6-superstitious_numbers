@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# This script is displays numbers and text in a loop based on conditions
+
+COUNT=1
+while [ $COUNT -lt 21 ]
+do
+	case $COUNT in
+		4 )
+			echo $COUNT
+			echo "bad luck from China" ;;
+		9 )
+			echo $COUNT
+			echo "bad luck from Japan" ;;
+		17 )
+			echo $COUNT
+			echo "bad luck from Italy" ;;
+		* )
+			echo $COUNT ;;
+	esac
+	COUNT=$(( COUNT + 1 ))
+done
