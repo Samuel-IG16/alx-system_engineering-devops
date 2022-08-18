@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script is displays different text in a loop based on conditions
+# This script is displaying different text in a loop based on conditions
 
 COUNT=1
 while [ $COUNT -lt 11 ]
