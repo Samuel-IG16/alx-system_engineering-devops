@@ -2,7 +2,7 @@
 # This script is displaying "Best School" 10 times
 
 COUNT=0
-until [ $COUNT -gt 11 ]
+until [ $COUNT -gt 9 ]
 do
 	echo "Best School"
 	COUNT=$(( COUNT + 1 ))
