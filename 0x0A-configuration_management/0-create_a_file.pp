@@ -1,3 +1,4 @@
+# creates a file in the /tmp directory
 $file_path = '/tmp/school'
 
 file { $file_path:
