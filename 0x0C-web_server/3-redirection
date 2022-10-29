@@ -1,19 +1,29 @@
 #!/usr/bin/env bash
+# Configures a new Ubuntu machine with nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow "Nginx HTTP" # allow incoming connections from nginx
+# sudo ufw status verbose: should return inactive
+cd /var/www/ || return
+sudo chmod 777 html
+echo "Hello World!" > html/index.html
+sudo chmod 755 html
 # Configure your Nginx server to redirect to another page
-
-sudo apt-get update
-sudo apt-get install -y nginx
-
-mkdir /etc/nginx/html
-echo "Hello World" > /etc/nginx/html/index.html
-printf %s "server {
-    listen 80;
+cd /etc/nginx/sites-enabled/ || return
+SERVER_CONFIG=\
+"server {
+    listen 80 default_server;
     listen [::]:80 default_server;
-    root   /etc/nginx/html;
-    index  index.html index.htm;
-    location /redirect_me {
-        return 301 http://cuberule.com/;
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+    server_name _;
+    location / {
+            try_files $uri $uri/ =404;
     }
-}" > /etc/nginx/sites-enabled/default
+    location /redirect_me {
+            return 301 https://www.alxafrica.com;
+    }
+}"
+sudo bash -c "echo -e '$SERVER_CONFIG' > /etc/nginx/sites-enabled/default"
 
 sudo service nginx restart
