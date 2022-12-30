@@ -10,20 +10,6 @@ echo "Hello World!" > html/index.html
 sudo chmod 755 html
 # Configure your Nginx server to redirect to another page
 cd /etc/nginx/sites-enabled/ || return
-SERVER_CONFIG=\
-"server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-    root /var/www/html;
-    index index.html index.htm index.nginx-debian.html;
-    server_name _;
-    location / {
-            try_files $uri $uri/ =404;
-    }
-    location /redirect_me {
-            return 301 https://www.alxafrica.com;
-    }
-}"
-sudo bash -c "echo -e '$SERVER_CONFIG' > /etc/nginx/sites-enabled/default"
-
+REDIRECT_CONFIG="\tlocation /redirect_me {\n\t\treturn 301 https://www.alxafrica.com;\n\t}"
+sudo sed -i "52 a \    $REDIRECT_CONFIG" /etc/nginx/sites-enabled/default
 sudo service nginx restart
