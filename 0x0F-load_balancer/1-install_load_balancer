@@ -1,23 +1,19 @@
 #!/usr/bin/env bash
 # Installs and setup haproxy
+sudo apt-get -y update
+sudo apt-get install -y haproxy
+sudo echo "ENABLED=1" >> /etc/default/haproxy
+# Listen to web1 and web2 servers                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+sudo echo "
+   frontend www
+        bind *:80
+        default_backend nginx_pool
 
-apt-get install -y software-properties-common
-add-apt-repository -y ppa:vbernat/haproxy-1.8
-apt-get -y update
-apt-get install -y haproxy=1.8.\*
-
-echo "ENABLED=1" > /etc/default/haproxy
-
-# Listen to web1 and web2 servers                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-echo "
-   listen load_balancer
-   bind *:80
-   mode http
-   balance roundrobin
-   option httpclose
-   option forwardfor
-   server 36581-web-01 35.168.110.51:80 check
-   server 36581-web-02 18.204.6.115:80 check
+   backend nginx_pool
+        balance roundrobin
+        mode http
+        server 36581-web-01 34.232.53.239:80 check
+        server 36581-web-02 18.206.206.128:80 check
 " >> /etc/haproxy/haproxy.cfg
-
-service haproxy start
+sudo haproxy -f /etc/haproxy/haproxy.cfg -c
+sudo service haproxy restart
