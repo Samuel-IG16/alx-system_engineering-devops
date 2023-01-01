@@ -9,7 +9,7 @@ a Bash script to automate generation of database backups.
 
 * [4-mysql_configuration_primary](./4-mysql_configuration_primary): The MySQL
 `my.conf` configuration file used to set up my first server as a primary database
-server on the database `tyrell_corp`.
+server on the database `tyrell_corp`
 
 * [4-mysql_configuration_replica](./4-mysql_configuration_replica): The MySQL
 `my.conf` configuration file used to set up my second server as the replica
