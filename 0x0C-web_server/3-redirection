@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Configures a new Ubuntu machine with nginx
+# Configures a new Ubuntu machine with nginx.
 sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo ufw allow "Nginx HTTP" # allow incoming connections from nginx
